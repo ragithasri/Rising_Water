@@ -1,0 +1,23 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prediction result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">FLOOD PREDICTION RESULT</p>
+      <h1>{% if prediction == 1 %}Flood risk detected{% else %}No flood risk detected{% endif %}</h1>
+      <p>The model estimates a <strong>{{ 'high' if prediction == 1 else 'low' }}</strong> likelihood of flooding.</p>
+    </section>
+    <section class="card result">
+      <p class="score">{{ '%.1f'|format(probability) }}<small>%</small></p>
+      <p>Estimated probability of flood</p>
+      <a class="button" href="{{ url_for('home') }}">Make another prediction</a>
+    </section>
+  </main>
+</body>
+</html>
